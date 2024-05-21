@@ -1235,7 +1235,6 @@ nav .navbar .nav-links .links li .arrow{
 .member .member-container .match .button button {
     padding: .5rem 1rem;
     border-radius: .5rem;
-    cursor: pointer;
 }
 
 .member .member-container .match .button button:nth-child(1) {
@@ -1281,6 +1280,7 @@ nav .navbar .nav-links .links li .arrow{
     color: #000000;
     font-weight: bold;
     border-radius: 1rem;
+    cursor:pointer;
 }
 
 .member .member-container .match .input {
@@ -1385,9 +1385,6 @@ nav .navbar .nav-links .links li .arrow{
 
 
 @media (max-width:1160px){
-    html{
-        font-size: 80%;
-    }
     nav .navbar .nav-links{
         display:block;
         position: fixed;
@@ -1467,7 +1464,7 @@ nav .navbar .nav-links .links li .arrow{
 }
 @media (max-width:950px){
     html{
-        font-size: 65%;
+        font-size: 80%;
     }
     .withdraw{
         margin-top:9rem;
@@ -1569,7 +1566,7 @@ nav .navbar .nav-links .links li .arrow{
 
 @media (max-width:500px){
     html{
-        font-size: 62.5%;
+        font-size: 75%;
     }
     .home-container{
         flex-wrap: wrap;

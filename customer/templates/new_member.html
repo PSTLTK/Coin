@@ -164,10 +164,10 @@
                 <p>9999</p>
             </div>
             <h3>Price Range</h3>
-            <p class="plus">{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}}</p>
+            <p class="plus">{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}}
+            </p>
             <div class="button">
-                {% if histroy.first.total <= 13 %}
-                    <button>Bear</button>
+                {% if histroy.first.total <= 13 %} <button>Bear</button>
                     {% else %}
                     <button>Bull</button>
                     {% endif %}
@@ -203,11 +203,7 @@
             <div class="graph">
 
             </div>
-            <div class="where-btn">
-                <button id="rrh">Random Recent Histroy</button>
-                <button id="urh">User Recent Histroy</button>
-            </div>
-            <table border="1" id="rrht">
+            <table border="1">
                 <tr style="background-color: #222;">
                     <td colspan="3">
                         <h1>Random Recent History</h1>
@@ -218,13 +214,12 @@
                     <th>Result</th>
                     <th>Status</th>
                 </tr>
-                 {%for h in histroy %}
-                    <tr class="tb">
-                        <td>{{h.roundno}}</td>
-                        <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
-                        <td>
-                            {% if h.total <= 13 %}
-                            <button>Bear</button>
+                {%for h in histroy %}
+                <tr class="tb">
+                    <td>{{h.roundno}}</td>
+                    <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
+                    <td>
+                        {% if h.total <= 13 %} <button>Bear</button>
                             {% else %}
                             <button>Bull</button>
                             {% endif %}
@@ -233,14 +228,14 @@
                             {% else %}
                             <button>Single</button>
                             {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
             </table>
 
-            <table border="1" id="urht" style="display: none;">
+            <table border="1">
                 <tr style="background-color: #222;">
-                    <td colspan="3">
+                    <td colspan="4">
                         <h1>User Recent History</h1>
                     </td>
                 </tr>
@@ -250,20 +245,20 @@
                     <th>User Amount</th>
                     <th>Results</th>
                 </tr>
-                 {%for h in uh %}
-                 <tr class="tb">
+                {%for h in uh %}
+                <tr class="tb">
                     <td>{{h.roundno}}</td>
                     <td><button>{{h.choice}}</button></td>
                     <td>{{h.amount}}</td>
                     <td>{{h.result}}</td>
                 </tr>
-                    {% endfor %}
+                {% endfor %}
             </table>
         </div>
     </div>
-    <input type="text" value="{{b}}" id="b" hidden/>
-            <h6 id="u" hidden>{{u}}</h6>
-            <h6 id="userid" hidden>{{user.id}}</h6>
+    <input type="text" value="{{b}}" id="b" hidden />
+    <h6 id="u" hidden>{{u}}</h6>
+    <h6 id="userid" hidden>{{user.id}}</h6>
 </section>
 
 <script>
@@ -274,7 +269,7 @@
     socket.onmessage = function (event) {
         const message = event.data;
         if (message == "start_process") {
-            window.location.href='/customer/random/'
+            window.location.href = '/customer/random/'
             // Handle starting the next process
             console.log(message)
         } else {
@@ -283,86 +278,74 @@
         }
     };
 
-const bull = document.getElementById("bull")
-const single = document.getElementById("single")
-const bear = document.getElementById("bear")
-const twin = document.getElementById("twin")
+    const bull = document.getElementById("bull")
+    const single = document.getElementById("single")
+    const bear = document.getElementById("bear")
+    const twin = document.getElementById("twin")
 
-const cinput = document.getElementById("cinput")
-const cbtn = document.getElementById("cbtn")
-const am = document.getElementById("am")
-const b = document.getElementById("b")
+    const cinput = document.getElementById("cinput")
+    const cbtn = document.getElementById("cbtn")
+    const am = document.getElementById("am")
+    const b = document.getElementById("b")
 
-const sub = document.getElementById("sub")
-const u = document.getElementById("u").innerHTML
-const userid = Number(document.getElementById("userid").innerHTML)
+    const sub = document.getElementById("sub")
+    const u = document.getElementById("u").innerHTML
+    const userid = Number(document.getElementById("userid").innerHTML)
 
-let uc;
-const UChoice = (c)=> {
-    console.log("ok")
-    if(c=="bull"){
-        bull.style.backgroundColor="blue"
-        bear.style.backgroundColor="white"
-        single.style.backgroundColor="white"
-        twin.style.backgroundColor="white"
-    }else if(c=="bear"){
-         bull.style.backgroundColor="white"
-         bear.style.backgroundColor="red"
-        single.style.backgroundColor="white"
-        twin.style.backgroundColor="white"
-    }else if(c=="twin"){
-         bull.style.backgroundColor="white"
-         bear.style.backgroundColor="white"
-        single.style.backgroundColor="white"
-        twin.style.backgroundColor="blue"
-    }else{
-         bull.style.backgroundColor="white"
-         bear.style.backgroundColor="white"
-        single.style.backgroundColor="red"
-        twin.style.backgroundColor="white"
-    }
+    let uc;
+    const UChoice = (c) => {
+        console.log("ok")
+        if (c == "bull") {
+            bull.style.backgroundColor = "blue"
+            bear.style.backgroundColor = "white"
+            single.style.backgroundColor = "white"
+            twin.style.backgroundColor = "white"
+        } else if (c == "bear") {
+            bull.style.backgroundColor = "white"
+            bear.style.backgroundColor = "red"
+            single.style.backgroundColor = "white"
+            twin.style.backgroundColor = "white"
+        } else if (c == "twin") {
+            bull.style.backgroundColor = "white"
+            bear.style.backgroundColor = "white"
+            single.style.backgroundColor = "white"
+            twin.style.backgroundColor = "blue"
+        } else {
+            bull.style.backgroundColor = "white"
+            bear.style.backgroundColor = "white"
+            single.style.backgroundColor = "red"
+            twin.style.backgroundColor = "white"
+        }
         uc = c
     }
 
-twin.addEventListener('click', function(){ UChoice("twin"); });
+    twin.addEventListener('click', function () { UChoice("twin"); });
 
-single.addEventListener('click', function(){UChoice("single");});
+    single.addEventListener('click', function () { UChoice("single"); });
 
-bull.addEventListener('click', function(){  UChoice("bull"); });
+    bull.addEventListener('click', function () { UChoice("bull"); });
 
-bear.addEventListener('click', function(){ UChoice("bear");});
+    bear.addEventListener('click', function () { UChoice("bear"); });
 
-cbtn.onclick = function(){ 
-    if( Number(cinput.value) > Number(b.value)){
-        alert("Not Enough coin")
-    }else{
-          am.innerHTML = Number(am.innerHTML) + Number(cinput.value)
-        cinput.value = ""
+    cbtn.onclick = function () {
+        if (Number(cinput.value) > Number(b.value)) {
+            alert("Not Enough coin")
+        } else {
+            am.innerHTML = Number(am.innerHTML) + Number(cinput.value)
+            cinput.value = ""
+        }
     }
- }
-sub.onclick = function(){
-            if(uc==undefined){
+    sub.onclick = function () {
+        if (uc == undefined) {
             alert("Please Choose")
-            }else if(Number(am.innerHTML) < 1){
-                alert("Please Choose AMount")
-            }
-            else{
-             window.location.href = `/customer/upick/${uc}/${am.innerHTML}/`
-            }   
+        } else if (Number(am.innerHTML) < 1) {
+            alert("Please Choose AMount")
+        }
+        else {
+            window.location.href = `/customer/upick/${uc}/${am.innerHTML}/`
+        }
 
-}
-
-const rrh = document.getElementById("rrh")
-const urh = document.getElementById("urh")
-const rrht = document.getElementById("rrht")
-const urht = document.getElementById("urht")
-
-rrh.addEventListener('click', function(){ rrht.style.display="inline";
- urht.style.display="none"
-});
-
-urh.addEventListener('click', function(){ rrht.style.display="none";
- urht.style.display="inline"});
+    }
 </script>
 
 

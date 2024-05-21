@@ -45,6 +45,7 @@ section{
     padding:3rem 2rem;
     color:#fff;
     border-radius: .5rem;
+    cursor:pointer;
 }
 
 .roomcontainer .box .sector{

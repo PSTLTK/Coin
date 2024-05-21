@@ -3,94 +3,284 @@
 {% load humanize %}
 {% load static %}
 
-<style>
+<div class="container-fluid">
+  <h1 style="margin-top:200px">New Member</h1>
 
+  <h2>Round No . {{ran.roundno}}<h2>
+
+      <form method="post" action="/myadmin/chran/">
+        {% csrf_token %}
+        <input type="text" value="{{ran.a}}" name="a" id="a" class="cinp" />
+        <input type="text" value="{{ran.b}}" name="b" id="b" class="cinp" />
+        <input type="text" value="{{ran.c}}" name="c" id="c" class="cinp" />
+        <input type="text" value="{{ran.total}}" name="t" id="t" readonly />
+
+        <input type="submit" name="sub" />
+      </form>
+      <div class="c5">
+        {% if ran.total <= 13 %} <h4 class="c6">Bear</h4>
+          {% else %}
+          <h4 class="c6">Bull</h4>
+          {% endif %}
+          {% if ran.total|divisibleby:2 %}
+          <h4 class="c7">Twin</h4>
+          {% else %}
+          <h4 class="c7">Single</h4>
+          {% endif %}
+      </div>
+      <hr />
+      <div class="col-lg-6">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr style="background-color: #222;">
+                <td colspan="3">
+                  <h1>All Users</h1>
+                </td>
+              </tr>
+              <tr>
+                <td scope="col">amount</td>
+                <td scope="col">Choice</td>
+                <td scope="col">User</td>
+              </tr>
+            </thead>
+            <tbody>
+              {%for u in uc %}
+              <tr>
+                <td>{{u.amount}}</td>
+                <td>{{u.choice}}</td>
+                <td>{{u.user.name}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr style="background-color: #222;">
+                <td colspan="3">
+                  <h1>Current Winner</h1>
+                </td>
+              </tr>
+              <tr>
+                <td scope="col">amount</td>
+                <td scope="col">Choice</td>
+                <td scope="col">User</td>
+              </tr>
+            </thead>
+            <tbody>
+              {%for u in uc %}
+              <tr>
+                <td>{{u.amount}}</td>
+                <td>{{u.choice}}</td>
+                <td>{{u.user.name}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+</div>
+</div><!--End Row-->
+
+
+
+<!--start overlay-->
+<div class="overlay toggle-menu"></div>
+<!--end overlay-->
+
+</div>
+<!-- End container-fluid-->
+
+
+<style>
+  .pimg {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+
+  /*   thead tr th{
+      cursor: pointer;
+    }*/
+
+
+  table {
+    width: 100%;
+  }
+
+  td img {
+    width: 36px;
+    height: 36px;
+    margin-right: .5rem;
+    border-radius: 50%;
+
+    vertical-align: middle;
+  }
+
+  table,
+  th,
+  td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #01010a;
+    cursor: pointer;
+  }
+
+  tbody tr {
+    --delay: .1s;
+    transition: .5s ease-in-out var(--delay);
+  }
+
+  tbody tr.hide {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  tbody tr:hover {
+    background-color: #fff6 !important;
+  }
+
+  tbody tr td,
+  tbody tr td p,
+  tbody tr td img {
+    transition: .2s ease-in-out;
+  }
+
+  tbody tr.hide td,
+  tbody tr.hide td p {
+    padding: 0;
+    font: 0 / 0 sans-serif;
+    transition: .2s ease-in-out .5s;
+  }
+
+  tbody tr.hide td img {
+    width: 0;
+    height: 0;
+    transition: .2s ease-in-out .5s;
+  }
+
+  .status {
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+  }
+
+  @media (max-width:1000px) {
+    td:not(:first-of-type) {
+      min-width: 12.1rem;
+    }
+  }
+
+  thead th span.icon-arrow {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    border: 1.4px solid transparent;
+
+    text-align: center;
+    font-size: 1rem;
+
+    margin-left: .5rem;
+    transition: .2s ease-in-out;
+  }
+
+  thead th:hover span.icon-arrow {
+    border: 1.4px solid #6c00bd;
+  }
+
+  thead th.active span.icon-arrow {
+    background-color: #6c00bd;
+    color: #fff;
+  }
+
+  thead th.asc span.icon-arrow {
+    transform: rotate(180deg);
+  }
+
+  thead th:hover {
+    color: #6c00bd;
+  }
+
+  thead th.active {
+    color: #6c00bd;
+  }
 </style>
 <div class="container-fluid">
-    <h1 style="margin-top:200px">New Member</h1>
-
-<h2>Round No . {{ran.roundno}}<h2>
-
-<form method="post" action="/myadmin/chran/">
-	{% csrf_token %}
-	<input type="text" value="{{ran.a}}" name="a" id="a" class="cinp"/>
-	<input type="text" value="{{ran.b}}" name="b" id="b" class="cinp"/>
-	<input type="text" value="{{ran.c}}" name="c" id="c" class="cinp"/>
-	<input type="text" value="{{ran.total}}" name="t" id="t" readonly/>
-
-	<input type="submit" name="sub"/>
-</form>
-<div class="c5">
-                    {% if ran.total <= 13 %}
-                    <h4 class="c6">Bear</h4>
-                    {% else %}
-                    <h4 class="c6">Bull</h4>
-                    {% endif %}
-                    {% if ran.total|divisibleby:2 %}
-                    <h4 class="c7">Twin</h4>
-                    {% else %}
-                    <h4 class="c7">Single</h4>
-                    {% endif %}
-                </div>
-<hr/>
-        <div class="col-lg-6">
-            <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                      <tr style="background-color: #222;">
-                          <td colspan="3">
-                              <h1>All Users</h1>
-                          </td>
-                      </tr>
-                    <tr>
-                      <td scope="col">amount</td>
-                      <td scope="col">Choice</td>
-                      <td scope="col">User</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {%for u in uc %}
-                      <tr>
-                          <td>{{u.amount}}</td>
-                          <td>{{u.choice}}</td>
-                          <td>{{u.user.name}}</td>
-                      </tr>
-                      {% endfor %}
-                  </tbody>
-                </table>
-              </div>      
-        </div>
-
-
-        <div class="col-lg-6">
-            <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr style="background-color: #222;">
-                        <td colspan="3">
-                            <h1>Current Winner</h1>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td scope="col">amount</td>
-                      <td scope="col">Choice</td>
-                      <td scope="col">User</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {%for u in uc %}
-                      <tr>
-                          <td>{{u.amount}}</td>
-                          <td>{{u.choice}}</td>
-                          <td>{{u.user.name}}</td>
-                      </tr>
-                      {% endfor %}
-                  </tbody>
-                </table>
-              </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 style="text-align: center;">Users List</h2>
+          </div>
+          <div class="col-lg-6">
+            <form class="search-bar">
+              <input type="text" class="form-control" placeholder="Enter keywords" id="search">
+              <a href="javascript:search();"><i class="icon-magnifier"></i></a>
+            </form>
           </div>
         </div>
-        
+
+
+
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">No.<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">User ID<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Profile<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Name<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Role<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Last Login<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Is Active<span class="icon-arrow">&UpArrow;</span></th>
+                <th scope="col">Detail<span class="icon-arrow">&UpArrow;</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for u in users %}
+              <tr>
+                <td scope="row">{{forloop.counter0|add:users.start_index}}</td>
+                <td>{{u.id|truncatechars:6}}</td>
+                <td>
+                  {% if u.profile|length == 0 %}
+                  <img src="{% static 'profile-icon.png' %}" class="pimg" />
+                  {% else %}
+                  <img src="/media/{{u.profile}}" class="pimg" />
+                  {% endif %}
+                </td>
+                <td>{{u.name}}</td>
+                <td>{{u.role}}</td>
+                <td>{{u.last_login | naturaltime }}</td>
+                <td>{{u.is_active}}</td>
+                <td><a href="/myadmin/detail/{{u.id}}/">
+                    <img src="../../static/di.png" width="50" height="50" /></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </div>
+    </div>
     {% if users.has_other_pages %}
     <div style="display: flex; justify-content: center;">
       <nav aria-label="Topics pagination" class="mb-4">
@@ -143,21 +333,83 @@
 </div>
 <!-- End container-fluid-->
 
+<!--Start Back To Top Button-->
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<!--End Back To Top Button-->
+
 <script>
-	const a =  document.getElementById("a")
-	const b =  document.getElementById("b")
-	const c =  document.getElementById("c")
-	const t =  document.getElementById("t")
+  const search = () => {
+    const text = document.getElementById('search')
+    if (text.value == "") {
+      alert("Please Type A KeyWord")
+    } else {
+      window.location.href = `/myadmin/search/${text.value}/`
+    }
+  }
+  // const search = document.querySelector('.input-group input'),
+  table_rows = document.querySelectorAll('tbody tr');
+  table_headings = document.querySelectorAll('thead tr th');
 
-	const ChV = () => {
-		console.log(a.value,b.value,c.value)
-		t.value = Number(a.value) + Number(b.value) + Number(c.value) 
-	}
+  // search.addEventListener('input',searchTable);
 
-	a.onchange = function(){ChV()}
-	b.onchange = function(){ChV()}
-	c.onchange = function(){ChV()}
+  // function searchTable() {
+  //     table_rows.forEach((row, i) => {
+  //         let table_data = row.textContent.toLowerCase(),
+  //             search_data = search.value.toLowerCase();
 
-	//setInterval(function () {window.location.reload()}, 10000);
+  //             row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+  //             row.style.setProperty('--delay', i / 25 + 's');
+  //     })
+
+  //     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+  //         visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b'
+  //     });
+  // }
+
+  table_headings.forEach((head, i) => {
+    let sort_arc = true;
+    console.log(head, i)
+    head.onclick = () => {
+      table_headings.forEach(head => head.classList.remove('active'));
+      head.classList.add('active');
+
+      document.querySelectorAll('td').forEach(td => td.classList.remove('active'))
+      table_rows.forEach(row => {
+        console.log(i)
+        row.querySelectorAll('td')[i].classList.add('active')
+      })
+
+      head.classList.toggle('asc', sort_arc);
+      sort_arc = head.classList.contains('asc') ? false : true;
+
+      sortTable(i, sort_arc);
+    }
+  })
+
+  function sortTable(column, sort_arc) {
+    [...table_rows].sort((a, b) => {
+      let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
+        second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+
+      return sort_arc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+    })
+      .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row))
+  }
+  const a = document.getElementById("a")
+  const b = document.getElementById("b")
+  const c = document.getElementById("c")
+  const t = document.getElementById("t")
+
+  const ChV = () => {
+    console.log(a.value, b.value, c.value)
+    t.value = Number(a.value) + Number(b.value) + Number(c.value)
+  }
+
+  a.onchange = function () { ChV() }
+  b.onchange = function () { ChV() }
+  c.onchange = function () { ChV() }
+
+  //setInterval(function () {window.location.reload()}, 10000);
 </script>
+
 {% endblock %}
