@@ -1,0 +1,163 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+{% load humanize %}
+{% load static %}
+
+<style>
+
+</style>
+<div class="container-fluid">
+    <h1 style="margin-top:200px">New Member</h1>
+
+<h2>Round No . {{ran.roundno}}<h2>
+
+<form method="post" action="/myadmin/chran/">
+	{% csrf_token %}
+	<input type="text" value="{{ran.a}}" name="a" id="a" class="cinp"/>
+	<input type="text" value="{{ran.b}}" name="b" id="b" class="cinp"/>
+	<input type="text" value="{{ran.c}}" name="c" id="c" class="cinp"/>
+	<input type="text" value="{{ran.total}}" name="t" id="t" readonly/>
+
+	<input type="submit" name="sub"/>
+</form>
+<div class="c5">
+                    {% if ran.total <= 13 %}
+                    <h4 class="c6">Bear</h4>
+                    {% else %}
+                    <h4 class="c6">Bull</h4>
+                    {% endif %}
+                    {% if ran.total|divisibleby:2 %}
+                    <h4 class="c7">Twin</h4>
+                    {% else %}
+                    <h4 class="c7">Single</h4>
+                    {% endif %}
+                </div>
+<hr/>
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                      <tr style="background-color: #222;">
+                          <td colspan="3">
+                              <h1>All Users</h1>
+                          </td>
+                      </tr>
+                    <tr>
+                      <td scope="col">amount</td>
+                      <td scope="col">Choice</td>
+                      <td scope="col">User</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {%for u in uc %}
+                      <tr>
+                          <td>{{u.amount}}</td>
+                          <td>{{u.choice}}</td>
+                          <td>{{u.user.name}}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+              </div>      
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr style="background-color: #222;">
+                        <td colspan="3">
+                            <h1>Current Winner</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">amount</td>
+                      <td scope="col">Choice</td>
+                      <td scope="col">User</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {%for u in uc %}
+                      <tr>
+                          <td>{{u.amount}}</td>
+                          <td>{{u.choice}}</td>
+                          <td>{{u.user.name}}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+        
+    {% if users.has_other_pages %}
+    <div style="display: flex; justify-content: center;">
+      <nav aria-label="Topics pagination" class="mb-4">
+        <ul class="pagination">
+          {% if users.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ users.previous_page_number }}">Previous</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          {% endif %}
+          {% for page_num in users.paginator.page_range %}
+          {% if users.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+            </span>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% if users.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ users.next_page_number }}">Next</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next</span>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+
+  </div>
+</div><!--End Row-->
+
+
+
+<!--start overlay-->
+<div class="overlay toggle-menu"></div>
+<!--end overlay-->
+
+</div>
+<!-- End container-fluid-->
+
+<script>
+	const a =  document.getElementById("a")
+	const b =  document.getElementById("b")
+	const c =  document.getElementById("c")
+	const t =  document.getElementById("t")
+
+	const ChV = () => {
+		console.log(a.value,b.value,c.value)
+		t.value = Number(a.value) + Number(b.value) + Number(c.value) 
+	}
+
+	a.onchange = function(){ChV()}
+	b.onchange = function(){ChV()}
+	c.onchange = function(){ChV()}
+
+	//setInterval(function () {window.location.reload()}, 10000);
+</script>
+{% endblock %}

@@ -1,0 +1,401 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <div class="a1">
+    <div class="b1">
+        <div class="b2">
+            <center>
+                <h2 class="c1">US</h2>
+
+                <div class="c2">
+                    <h2>Total Amount</h2>
+                    <h2>{{b}} USDT</h2>
+
+                </div>
+
+                <div class="c3">
+                    <h1>Last Time</h1>
+                    <h1>71976</h1>
+                </div>
+
+                <span> Price Range</span>
+                <div class="c4">
+                    <h2>{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}} </h2>
+                </div>
+                <div class="c5">
+                    {% if histroy.first.total <= 13 %}
+                    <h4 class="c6">Bear</h4>
+                    {% else %}
+                    <h4 class="c6">Bull</h4>
+                    {% endif %}
+                    {% if histroy.first.total|divisibleby:2 %}
+                    <h4 class="c7">Twin</h4>
+                    {% else %}
+                    <h4 class="c7">Single</h4>
+                    {% endif %}
+                </div>
+            </center>
+
+
+        </div>
+        <div class="b3">
+
+           <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <div class="t1">
+        <div class="t2">
+            <center>
+                <div class="t3">
+                    <h1>Open Time</h1>
+                    <h1>{{roundno}}</h1>
+                </div>
+                <div class="t4">
+                    <h1 id="timer">05:00</h1>
+                </div>
+                <div class="t5">
+                    <button class="bull" id="bull">Bull</button>
+                    <button class="single" id="single">Single</button>
+                </div>
+                <div class="t6">
+                    <h2 class="am" id="am">0</h2>
+                </div>
+                <div class="t7">
+                    <button class="bear" id="bear">Bear</button>
+                    <button class="twin" id="twin">Twin</button>
+                </div>
+                <div>
+                    <input type="number" id="cinput" min="1" />
+                    <button id="cbtn" >submit</button>
+                </div>
+                <button id="sub">SubMit</button>
+            </center>
+
+
+        </div>
+        <div class="q1">
+            <center>
+                <div class="q2">
+                    <h2>Recent History</h2>
+                </div>
+            </center>
+            <center>
+                <div class="q3">
+
+                    <center class="q4">
+                        <div class="box3">
+                            <table class="q5">
+                                <thead class="q6">
+                                    <tr>
+                                        <th>Round</th>
+                                        <th>Result</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for h in histroy %}
+                                    <tr class="tb">
+                                        <td>{{h.roundno}}</td>
+                                        <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
+                                        <td>
+                                            {% if h.total <= 13 %}
+                                            <button class="ans1">Bear</button>
+                                            {% else %}
+                                            <button class="ans1">Bull</button>
+                                            {% endif %}
+                                            {% if h.total|divisibleby:2 %}
+                                            <button class="ans2">Twin</button>
+                                            {% else %}
+                                            <button class="ans2">Single</button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </center>
+
+                </div>
+
+                <div class="box3">
+                            <table class="q5">
+                                <thead class="q6">
+                                    <tr>
+                                        <th>Round</th>
+                                        <th>User Choice</th>
+                                        <th>User Amount</th>
+                                        <th>Results</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for h in uh %}
+                                    <tr class="tb">
+                                        <td>{{h.roundno}}</td>
+                                        <td>{{h.choice}}</td>
+                                        <td>{{h.amount}}</td>
+                                        <td>{{h.result}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+            </center>
+            <input type="submit" hidden/>
+            <input type="text" value="{{b}}" id="b" hidden/>
+            <h6 id="u" hidden>{{u}}</h6>
+            <h6 id="userid" hidden>{{user.id}}</h6>
+        </div>
+    </div>
+
+</div> -->
+
+<section class="member">
+    <div class="member-container">
+        <div class="match">
+            <h3>US</h3>
+            <div class="amount">
+                <p>Total Amount</p>
+                <p><strong>{{b}}</strong> USDT</p>
+            </div>
+            <div class="last-time">
+                <p>Last Time</p>
+                <p>9999</p>
+            </div>
+            <h3>Price Range</h3>
+            <p class="plus">{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}}</p>
+            <div class="button">
+                {% if histroy.first.total <= 13 %}
+                    <button>Bear</button>
+                    {% else %}
+                    <button>Bull</button>
+                    {% endif %}
+                    {% if histroy.first.total|divisibleby:2 %}
+                    <button>Twin</button>
+                    {% else %}
+                    <button>Single</button>
+                    {% endif %}
+            </div>
+            <div class="open-time">
+                <p>Open Time</p>
+                <p>{{roundno}}</p>
+            </div>
+            <h3 class="time" id="timer">5:00</h3>
+            <div class="button-2">
+                <button style="border:4px solid blue" id="bull">Bull</button>
+                <button style="border:4px solid red" id="single">Single</button>
+            </div>
+            <div class="box">
+                <p id="am">0</p>
+            </div>
+            <div class="button-2">
+                <button style="border:4px solid red" id="bear">Bear</button>
+                <button style="border:4px solid blue" id="twin">Twin</button>
+            </div>
+            <div class="input">
+                <input type="text" id="cinput">
+                <button id="cbtn">Submit</button>
+            </div>
+            <button type="submit" id="sub">Submit</button>
+        </div>
+        <div class="graph-table">
+            <div class="graph">
+
+            </div>
+            <div class="where-btn">
+                <button id="rrh">Random Recent Histroy</button>
+                <button id="urh">User Recent Histroy</button>
+            </div>
+            <table border="1" id="rrht">
+                <tr style="background-color: #222;">
+                    <td colspan="3">
+                        <h1>Random Recent History</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Round</th>
+                    <th>Result</th>
+                    <th>Status</th>
+                </tr>
+                 {%for h in histroy %}
+                    <tr class="tb">
+                        <td>{{h.roundno}}</td>
+                        <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
+                        <td>
+                            {% if h.total <= 13 %}
+                            <button>Bear</button>
+                            {% else %}
+                            <button>Bull</button>
+                            {% endif %}
+                            {% if h.total|divisibleby:2 %}
+                            <button>Twin</button>
+                            {% else %}
+                            <button>Single</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+
+            <table border="1" id="urht" style="display: none;">
+                <tr style="background-color: #222;">
+                    <td colspan="3">
+                        <h1>User Recent History</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Round</th>
+                    <th>User Choice</th>
+                    <th>User Amount</th>
+                    <th>Results</th>
+                </tr>
+                 {%for h in uh %}
+                 <tr class="tb">
+                    <td>{{h.roundno}}</td>
+                    <td><button>{{h.choice}}</button></td>
+                    <td>{{h.amount}}</td>
+                    <td>{{h.result}}</td>
+                </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+    <input type="text" value="{{b}}" id="b" hidden/>
+            <h6 id="u" hidden>{{u}}</h6>
+            <h6 id="userid" hidden>{{user.id}}</h6>
+</section>
+
+<script>
+    const countdownElement = document.getElementById('timer');
+    const socket = new WebSocket(`ws://${window.location.host}/ws/countdown/`);
+    // chatSocket = new WebSocket(`ws://${window.location.host}/ws/${chatRoomUuid}/`)
+
+    socket.onmessage = function (event) {
+        const message = event.data;
+        if (message == "start_process") {
+            window.location.href='/customer/random/'
+            // Handle starting the next process
+            console.log(message)
+        } else {
+            countdownElement.innerHTML = message;
+            console.log(message)
+        }
+    };
+
+const bull = document.getElementById("bull")
+const single = document.getElementById("single")
+const bear = document.getElementById("bear")
+const twin = document.getElementById("twin")
+
+const cinput = document.getElementById("cinput")
+const cbtn = document.getElementById("cbtn")
+const am = document.getElementById("am")
+const b = document.getElementById("b")
+
+const sub = document.getElementById("sub")
+const u = document.getElementById("u").innerHTML
+const userid = Number(document.getElementById("userid").innerHTML)
+
+let uc;
+const UChoice = (c)=> {
+    console.log("ok")
+    if(c=="bull"){
+        bull.style.backgroundColor="blue"
+        bear.style.backgroundColor="white"
+        single.style.backgroundColor="white"
+        twin.style.backgroundColor="white"
+    }else if(c=="bear"){
+         bull.style.backgroundColor="white"
+         bear.style.backgroundColor="red"
+        single.style.backgroundColor="white"
+        twin.style.backgroundColor="white"
+    }else if(c=="twin"){
+         bull.style.backgroundColor="white"
+         bear.style.backgroundColor="white"
+        single.style.backgroundColor="white"
+        twin.style.backgroundColor="blue"
+    }else{
+         bull.style.backgroundColor="white"
+         bear.style.backgroundColor="white"
+        single.style.backgroundColor="red"
+        twin.style.backgroundColor="white"
+    }
+        uc = c
+    }
+
+twin.addEventListener('click', function(){ UChoice("twin"); });
+
+single.addEventListener('click', function(){UChoice("single");});
+
+bull.addEventListener('click', function(){  UChoice("bull"); });
+
+bear.addEventListener('click', function(){ UChoice("bear");});
+
+cbtn.onclick = function(){ 
+    if( Number(cinput.value) > Number(b.value)){
+        alert("Not Enough coin")
+    }else{
+          am.innerHTML = Number(am.innerHTML) + Number(cinput.value)
+        cinput.value = ""
+    }
+ }
+sub.onclick = function(){
+            if(uc==undefined){
+            alert("Please Choose")
+            }else if(Number(am.innerHTML) < 1){
+                alert("Please Choose AMount")
+            }
+            else{
+             window.location.href = `/customer/upick/${uc}/${am.innerHTML}/`
+            }   
+
+}
+
+const rrh = document.getElementById("rrh")
+const urh = document.getElementById("urh")
+const rrht = document.getElementById("rrht")
+const urht = document.getElementById("urht")
+
+rrh.addEventListener('click', function(){ rrht.style.display="inline";
+ urht.style.display="none"
+});
+
+urh.addEventListener('click', function(){ rrht.style.display="none";
+ urht.style.display="inline"});
+</script>
+
+
+<!-- <script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [ {%for h in histroy %} '{{ h.roundno }}', {% endfor %}],
+      datasets: [{
+        label: 'first number',
+        data: [{%for h in histroy %} '{{ h.a }}', {% endfor %}],
+        borderWidth: 1
+      },
+      {
+        label: 'second number',
+        data: [{%for h in histroy %} '{{ h.b }}', {% endfor %}],
+        borderWidth: 1
+      },
+      {
+        label: 'third number',
+        data: [{%for h in histroy %} '{{ h.c }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script> -->
+{% endblock %}

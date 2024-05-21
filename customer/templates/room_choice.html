@@ -1,0 +1,70 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block content %}
+<section style="margin-top: 6rem;">
+    <div class="roomcontainer">
+
+        <button class="box bgcolor1" onclick="myFunction(1)">
+            <div class="sector">
+                <h4>Number of Transctions 6231</h4>
+                <h4>Single minimum purchase 1</h4>
+            </div>
+            <div class="sector">
+                <h4>NEW MEMBER</h4>
+                <h4>Minimum entry balance 100 </h4>
+            </div>
+        </button>
+
+        <div class="box bgcolor2" onclick="myFunction(2)">
+            <div class="sector">
+                <h4>Number of Transctions 2066</h4>
+                <h4>Single minimum purchase 5</h4>
+            </div>
+            <div class="sector">
+                <h4>INTERMEDIATE</h4>
+                <h4>Minimum entry balance 5,000</h4>
+            </div>
+        </div>
+
+        <button class="box bgcolor3" onclick="myFunction(3)">
+            <div class="sector">
+                <h4>Number of Transctions 6231</h4>
+                <h4>Single minimum purchase 10</h4>
+            </div>
+            <div class="sector">
+                <h4>ADVANCED</h4>
+                <h4>Minimum entry balance 20,000 </h4>
+            </div>
+        </button>
+
+        <button class="box bgcolor4" onclick="myFunction(4)">
+            <div class="sector">
+                <h4>Number of Transctions 6231</h4>
+                <h4>Single minimum purchase 50</h4>
+            </div>
+            <div class="sector">
+                <h4>VIP ROOM</h4>
+                <h4>Minimum entry balance 50,000 </h4>
+            </div>
+        </button>
+    </div>
+</section>
+
+<script>
+
+    const myFunction =  (id) => {
+        if(id == 1 && 100 <= '{{b}}'){
+            window.location.href='/customer/new_member/'
+        }else if(id == 2 && 5000 <= '{{b}}'){
+            window.location.href='#inter'
+        }else if(id == 3 && 20000 <= '{{b}}'){
+            window.location.href='#ad'
+        }else if(id == 4 && 50000 <= '{{b}}'){
+            window.location.href='#vip'
+        }else{
+            alert("Not Enough Coin !")
+        }
+    }
+
+</script>
+{% endblock %}
