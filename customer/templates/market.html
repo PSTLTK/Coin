@@ -1,0 +1,338 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .maincontainer{
+        margin-top: 100px;
+    }
+    .buttoncontainer{
+        display:flex;
+        justify-content: center;
+    }
+
+    .buttoncontainer button{
+        background-color:#BA8864;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .buttoncontainer button:hover,.act{
+        border:1px solid #BA8864;
+        background-color:#433124;
+    }
+
+    #g2,#g3,#g4{
+        display: none;
+    }
+</style>
+<div class="maincontainer">
+    <div class="buttoncontainer">
+        <button id="btn1">Market OverView</button>
+        <button id="btn2">Crypto</button>
+        <button id="btn3">Stocks</button>
+        <button id="btn4">Economy</button>
+    </div>
+
+    <div class="graph">
+        <div id="g">
+            <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+    {
+    "width": "100%",
+    "height": "750",
+    "symbolsGroups": [
+      {
+        "name": "Indices",
+        "originalName": "Indices",
+        "symbols": [
+          {
+            "name": "FOREXCOM:SPXUSD",
+            "displayName": "S&P 500 Index"
+          },
+          {
+            "name": "FOREXCOM:NSXUSD",
+            "displayName": "US 100 Cash CFD"
+          },
+          {
+            "name": "FOREXCOM:DJI",
+            "displayName": "Dow Jones Industrial Average Index"
+          },
+          {
+            "name": "INDEX:NKY",
+            "displayName": "Nikkei 225"
+          },
+          {
+            "name": "INDEX:DEU40",
+            "displayName": "DAX Index"
+          },
+          {
+            "name": "FOREXCOM:UKXGBP",
+            "displayName": "FTSE 100 Index"
+          }
+        ]
+      },
+      {
+        "name": "Futures",
+        "originalName": "Futures",
+        "symbols": [
+          {
+            "name": "CME_MINI:ES1!",
+            "displayName": "S&P 500"
+          },
+          {
+            "name": "CME:6E1!",
+            "displayName": "Euro"
+          },
+          {
+            "name": "COMEX:GC1!",
+            "displayName": "Gold"
+          },
+          {
+            "name": "NYMEX:CL1!",
+            "displayName": "WTI Crude Oil"
+          },
+          {
+            "name": "NYMEX:NG1!",
+            "displayName": "Gas"
+          },
+          {
+            "name": "CBOT:ZC1!",
+            "displayName": "Corn"
+          }
+        ]
+      },
+      {
+        "name": "Bonds",
+        "originalName": "Bonds",
+        "symbols": [
+          {
+            "name": "CBOT:ZB1!",
+            "displayName": "T-Bond"
+          },
+          {
+            "name": "CBOT:UB1!",
+            "displayName": "Ultra T-Bond"
+          },
+          {
+            "name": "EUREX:FGBL1!",
+            "displayName": "Euro Bund"
+          },
+          {
+            "name": "EUREX:FBTP1!",
+            "displayName": "Euro BTP"
+          },
+          {
+            "name": "EUREX:FGBM1!",
+            "displayName": "Euro BOBL"
+          }
+        ]
+      },
+      {
+        "name": "Forex",
+        "originalName": "Forex",
+        "symbols": [
+          {
+            "name": "FX:EURUSD",
+            "displayName": "EUR to USD"
+          },
+          {
+            "name": "FX:GBPUSD",
+            "displayName": "GBP to USD"
+          },
+          {
+            "name": "FX:USDJPY",
+            "displayName": "USD to JPY"
+          },
+          {
+            "name": "FX:USDCHF",
+            "displayName": "USD to CHF"
+          },
+          {
+            "name": "FX:AUDUSD",
+            "displayName": "AUD to USD"
+          },
+          {
+            "name": "FX:USDCAD",
+            "displayName": "USD to CAD"
+          }
+        ]
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "colorTheme": "dark",
+    "locale": "en",
+    "backgroundColor": "#131722"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+        </div>
+        <div id="g">
+            <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+      {
+      "title": "Cryptocurrencies",
+      "title_raw": "Cryptocurrencies",
+      "title_link": "/markets/cryptocurrencies/prices-all/",
+      "width": "100vw",
+      "height": "700px",
+      "locale": "en",
+      "showSymbolLogo": true,
+      "symbolsGroups": [
+        {
+          "name": "Overview",
+          "symbols": [
+            {
+              "name": "CRYPTOCAP:TOTAL"
+            },
+            {
+              "name": "BITSTAMP:BTCUSD"
+            },
+            {
+              "name": "BITSTAMP:ETHUSD"
+            },
+            {
+              "name": "FTX:SOLUSD"
+            },
+            {
+              "name": "BINANCE:AVAXUSD"
+            },
+            {
+              "name": "COINBASE:UNIUSD"
+            }
+          ]
+        },
+        {
+          "name": "Bitcoin",
+          "symbols": [
+            {
+              "name": "BITSTAMP:BTCUSD"
+            },
+            {
+              "name": "COINBASE:BTCEUR"
+            },
+            {
+              "name": "COINBASE:BTCGBP"
+            },
+            {
+              "name": "BITFLYER:BTCJPY"
+            },
+            {
+              "name": "CME:BTC1!"
+            }
+          ]
+        },
+        {
+          "name": "Ethereum",
+          "symbols": [
+            {
+              "name": "BITSTAMP:ETHUSD"
+            },
+            {
+              "name": "KRAKEN:ETHEUR"
+            },
+            {
+              "name": "COINBASE:ETHGBP"
+            },
+            {
+              "name": "BITFLYER:ETHJPY"
+            },
+            {
+              "name": "BINANCE:ETHBTC"
+            },
+            {
+              "name": "BINANCE:ETHUSDT"
+            }
+          ]
+        },
+        {
+          "name": "Solana",
+          "symbols": [
+            {
+              "name": "FTX:SOLUSD"
+            },
+            {
+              "name": "BINANCE:SOLEUR"
+            },
+            {
+              "name": "COINBASE:SOLGBP"
+            },
+            {
+              "name": "BINANCE:SOLBTC"
+            },
+            {
+              "name": "HUOBI:SOLETH"
+            },
+            {
+              "name": "BINANCE:SOLUSDT"
+            }
+          ]
+        },
+        {
+          "name": "Uniswap",
+          "symbols": [
+            {
+              "name": "COINBASE:UNIUSD"
+            },
+            {
+              "name": "KRAKEN:UNIEUR"
+            },
+            {
+              "name": "COINBASE:UNIGBP"
+            },
+            {
+              "name": "BINANCE:UNIBTC"
+            },
+            {
+              "name": "KRAKEN:UNIETH"
+            },
+            {
+              "name": "BINANCE:UNIUSDT"
+            }
+          ]
+        }
+      ],
+      "colorTheme": "dark"
+    }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+        </div>
+        <div id="g">This is g3</div>
+        <div id="g">This is g4</div>
+    </div>
+
+</div>
+
+<script>
+
+    Btns = document.querySelectorAll('.buttoncontainer button');
+    gs = document.querySelectorAll('.graph #g');
+
+    Btns.forEach((btn,i) => {
+        btn.onclick = () => {
+        Btns.forEach(rbtn => {rbtn.classList.remove('act');rbtn.style.backgroundColor="#BA8864"});
+        btn.classList.add('act');
+        btn.style.backgroundColor="#433124"
+            console.log(gs)
+        gs.forEach(rg => {rg.style.display="none"});
+        gs[i].style.display="inline";
+    }});
+
+    document.addEventListener("DOMContentLoaded",()=>{
+        document.getElementById('btn1').style.backgroundColor="#433124"
+        document.getElementById('btn1').classList.add('act')
+    })
+
+</script>
+{%endblock%}

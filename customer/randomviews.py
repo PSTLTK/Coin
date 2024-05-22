@@ -28,7 +28,7 @@ def RandomCreate(request):
     ran.status = "now"
     ran.save()
 
-    return redirect('/app/new_member/')    
+    return redirect('/customer/new_member/')    
 
 def UserChoice(request,uc,am):
     current_user = User.objects.get(email = request.user.email)

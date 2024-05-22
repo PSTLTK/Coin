@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required
 def DepositBonus(request):
     return render(request,"deposit_bonus.html")
 
+def Market(request):
+    return render(request,"market.html")
+
 def HomePage(request):
     herosection = HeroSectionModel.objects.all().order_by('-time')[:1]
     token = '6779452535:AAFyEG35dthKQJpZz9kOj2RTg46QwbXoukg'    

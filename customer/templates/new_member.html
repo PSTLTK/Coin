@@ -2,155 +2,6 @@
 {% load static %}
 {% block content %}
 
-<!-- <div class="a1">
-    <div class="b1">
-        <div class="b2">
-            <center>
-                <h2 class="c1">US</h2>
-
-                <div class="c2">
-                    <h2>Total Amount</h2>
-                    <h2>{{b}} USDT</h2>
-
-                </div>
-
-                <div class="c3">
-                    <h1>Last Time</h1>
-                    <h1>71976</h1>
-                </div>
-
-                <span> Price Range</span>
-                <div class="c4">
-                    <h2>{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}} </h2>
-                </div>
-                <div class="c5">
-                    {% if histroy.first.total <= 13 %}
-                    <h4 class="c6">Bear</h4>
-                    {% else %}
-                    <h4 class="c6">Bull</h4>
-                    {% endif %}
-                    {% if histroy.first.total|divisibleby:2 %}
-                    <h4 class="c7">Twin</h4>
-                    {% else %}
-                    <h4 class="c7">Single</h4>
-                    {% endif %}
-                </div>
-            </center>
-
-
-        </div>
-        <div class="b3">
-
-           <canvas id="myChart"></canvas>
-        </div>
-    </div>
-    <div class="t1">
-        <div class="t2">
-            <center>
-                <div class="t3">
-                    <h1>Open Time</h1>
-                    <h1>{{roundno}}</h1>
-                </div>
-                <div class="t4">
-                    <h1 id="timer">05:00</h1>
-                </div>
-                <div class="t5">
-                    <button class="bull" id="bull">Bull</button>
-                    <button class="single" id="single">Single</button>
-                </div>
-                <div class="t6">
-                    <h2 class="am" id="am">0</h2>
-                </div>
-                <div class="t7">
-                    <button class="bear" id="bear">Bear</button>
-                    <button class="twin" id="twin">Twin</button>
-                </div>
-                <div>
-                    <input type="number" id="cinput" min="1" />
-                    <button id="cbtn" >submit</button>
-                </div>
-                <button id="sub">SubMit</button>
-            </center>
-
-
-        </div>
-        <div class="q1">
-            <center>
-                <div class="q2">
-                    <h2>Recent History</h2>
-                </div>
-            </center>
-            <center>
-                <div class="q3">
-
-                    <center class="q4">
-                        <div class="box3">
-                            <table class="q5">
-                                <thead class="q6">
-                                    <tr>
-                                        <th>Round</th>
-                                        <th>Result</th>
-                                        <th>STATUS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {%for h in histroy %}
-                                    <tr class="tb">
-                                        <td>{{h.roundno}}</td>
-                                        <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
-                                        <td>
-                                            {% if h.total <= 13 %}
-                                            <button class="ans1">Bear</button>
-                                            {% else %}
-                                            <button class="ans1">Bull</button>
-                                            {% endif %}
-                                            {% if h.total|divisibleby:2 %}
-                                            <button class="ans2">Twin</button>
-                                            {% else %}
-                                            <button class="ans2">Single</button>
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </center>
-
-                </div>
-
-                <div class="box3">
-                            <table class="q5">
-                                <thead class="q6">
-                                    <tr>
-                                        <th>Round</th>
-                                        <th>User Choice</th>
-                                        <th>User Amount</th>
-                                        <th>Results</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {%for h in uh %}
-                                    <tr class="tb">
-                                        <td>{{h.roundno}}</td>
-                                        <td>{{h.choice}}</td>
-                                        <td>{{h.amount}}</td>
-                                        <td>{{h.result}}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-            </center>
-            <input type="submit" hidden/>
-            <input type="text" value="{{b}}" id="b" hidden/>
-            <h6 id="u" hidden>{{u}}</h6>
-            <h6 id="userid" hidden>{{user.id}}</h6>
-        </div>
-    </div>
-
-</div> -->
-
 <section class="member">
     <div class="member-container">
         <div class="match">
@@ -161,7 +12,7 @@
             </div>
             <div class="last-time">
                 <p>Last Time</p>
-                <p>9999</p>
+                <p>{{histroy.first.roundno}}</p>
             </div>
             <h3>Price Range</h3>
             <p class="plus">{{histroy.first.a}} + {{histroy.first.b}} + {{histroy.first.c}} = {{histroy.first.total}}
@@ -201,7 +52,7 @@
         </div>
         <div class="graph-table">
             <div class="graph">
-
+                <canvas id="myChart"></canvas>
             </div>
             <table border="1">
                 <tr style="background-color: #222;">
@@ -261,6 +112,7 @@
     <h6 id="userid" hidden>{{user.id}}</h6>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const countdownElement = document.getElementById('timer');
     const socket = new WebSocket(`ws://${window.location.host}/ws/countdown/`);
@@ -346,39 +198,37 @@
         }
 
     }
-</script>
 
+    const ctx = document.getElementById('myChart');
 
-<!-- <script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [ {%for h in histroy %} '{{ h.roundno }}', {% endfor %}],
-      datasets: [{
-        label: 'first number',
-        data: [{%for h in histroy %} '{{ h.a }}', {% endfor %}],
-        borderWidth: 1
-      },
-      {
-        label: 'second number',
-        data: [{%for h in histroy %} '{{ h.b }}', {% endfor %}],
-        borderWidth: 1
-      },
-      {
-        label: 'third number',
-        data: [{%for h in histroy %} '{{ h.c }}', {% endfor %}],
-        borderWidth: 1
-      }]
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [ {%for h in histroy %} '{{ h.roundno }}', {% endfor %}],
+    datasets: [{
+      label: 'first number',
+      data: [{%for h in histroy %} '{{ h.a }}', {% endfor %}],
+      borderWidth: 1
     },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+    {
+      label: 'second number',
+      data: [{%for h in histroy %} '{{ h.b }}', {% endfor %}],
+      borderWidth: 1
+    },
+    {
+      label: 'third number',
+      data: [{%for h in histroy %} '{{ h.c }}', {% endfor %}],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
       }
     }
-  });
-</script> -->
+  }
+});
+</script>
+
 {% endblock %}
