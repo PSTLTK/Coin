@@ -24,7 +24,7 @@
         background-color:#433124;
     }
 
-    #g2,#g3,#g4{
+    #g{
         display: none;
     }
 </style>
@@ -38,278 +38,28 @@
 
     <div class="graph">
         <div id="g">
-            <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-    {
-    "width": "100%",
-    "height": "750",
-    "symbolsGroups": [
-      {
-        "name": "Indices",
-        "originalName": "Indices",
-        "symbols": [
-          {
-            "name": "FOREXCOM:SPXUSD",
-            "displayName": "S&P 500 Index"
-          },
-          {
-            "name": "FOREXCOM:NSXUSD",
-            "displayName": "US 100 Cash CFD"
-          },
-          {
-            "name": "FOREXCOM:DJI",
-            "displayName": "Dow Jones Industrial Average Index"
-          },
-          {
-            "name": "INDEX:NKY",
-            "displayName": "Nikkei 225"
-          },
-          {
-            "name": "INDEX:DEU40",
-            "displayName": "DAX Index"
-          },
-          {
-            "name": "FOREXCOM:UKXGBP",
-            "displayName": "FTSE 100 Index"
-          }
-        ]
-      },
-      {
-        "name": "Futures",
-        "originalName": "Futures",
-        "symbols": [
-          {
-            "name": "CME_MINI:ES1!",
-            "displayName": "S&P 500"
-          },
-          {
-            "name": "CME:6E1!",
-            "displayName": "Euro"
-          },
-          {
-            "name": "COMEX:GC1!",
-            "displayName": "Gold"
-          },
-          {
-            "name": "NYMEX:CL1!",
-            "displayName": "WTI Crude Oil"
-          },
-          {
-            "name": "NYMEX:NG1!",
-            "displayName": "Gas"
-          },
-          {
-            "name": "CBOT:ZC1!",
-            "displayName": "Corn"
-          }
-        ]
-      },
-      {
-        "name": "Bonds",
-        "originalName": "Bonds",
-        "symbols": [
-          {
-            "name": "CBOT:ZB1!",
-            "displayName": "T-Bond"
-          },
-          {
-            "name": "CBOT:UB1!",
-            "displayName": "Ultra T-Bond"
-          },
-          {
-            "name": "EUREX:FGBL1!",
-            "displayName": "Euro Bund"
-          },
-          {
-            "name": "EUREX:FBTP1!",
-            "displayName": "Euro BTP"
-          },
-          {
-            "name": "EUREX:FGBM1!",
-            "displayName": "Euro BOBL"
-          }
-        ]
-      },
-      {
-        "name": "Forex",
-        "originalName": "Forex",
-        "symbols": [
-          {
-            "name": "FX:EURUSD",
-            "displayName": "EUR to USD"
-          },
-          {
-            "name": "FX:GBPUSD",
-            "displayName": "GBP to USD"
-          },
-          {
-            "name": "FX:USDJPY",
-            "displayName": "USD to JPY"
-          },
-          {
-            "name": "FX:USDCHF",
-            "displayName": "USD to CHF"
-          },
-          {
-            "name": "FX:AUDUSD",
-            "displayName": "AUD to USD"
-          },
-          {
-            "name": "FX:USDCAD",
-            "displayName": "USD to CAD"
-          }
-        ]
-      }
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": false,
-    "colorTheme": "dark",
-    "locale": "en",
-    "backgroundColor": "#131722"
-  }
-    </script>
-  </div>
-  <!-- TradingView Widget END -->
+          <iframe scrolling="no" allowtransparency="true" frameborder="0"
+           style="user-select: none; box-sizing: border-box; display: block; height:100vh; width: 100%;" 
+           src="https://www.tradingview-widget.com/embed-widget/market-quotes/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22symbolsGroups%22%3A%5B%7B%22name%22%3A%22Indices%22%2C%22originalName%22%3A%22Indices%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22FOREXCOM%3ASPXUSD%22%2C%22displayName%22%3A%22S%26P%20500%22%7D%2C%7B%22name%22%3A%22FOREXCOM%3ANSXUSD%22%2C%22displayName%22%3A%22US%20100%22%7D%2C%7B%22name%22%3A%22FOREXCOM%3ADJI%22%2C%22displayName%22%3A%22Dow%2030%22%7D%2C%7B%22name%22%3A%22INDEX%3ANKY%22%2C%22displayName%22%3A%22Nikkei%20225%22%7D%2C%7B%22name%22%3A%22INDEX%3ADEU40%22%2C%22displayName%22%3A%22DAX%20Index%22%7D%2C%7B%22name%22%3A%22FOREXCOM%3AUKXGBP%22%2C%22displayName%22%3A%22UK%20100%22%7D%5D%7D%2C%7B%22name%22%3A%22Futures%22%2C%22originalName%22%3A%22Futures%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22CME_MINI%3AES1!%22%2C%22displayName%22%3A%22S%26P%20500%22%7D%2C%7B%22name%22%3A%22CME%3A6E1!%22%2C%22displayName%22%3A%22Euro%22%7D%2C%7B%22name%22%3A%22COMEX%3AGC1!%22%2C%22displayName%22%3A%22Gold%22%7D%2C%7B%22name%22%3A%22NYMEX%3ACL1!%22%2C%22displayName%22%3A%22Crude%20Oil%22%7D%2C%7B%22name%22%3A%22NYMEX%3ANG1!%22%2C%22displayName%22%3A%22Natural%20Gas%22%7D%2C%7B%22name%22%3A%22CBOT%3AZC1!%22%2C%22displayName%22%3A%22Corn%22%7D%5D%7D%2C%7B%22name%22%3A%22Bonds%22%2C%22originalName%22%3A%22Bonds%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22CME%3AGE1!%22%2C%22displayName%22%3A%22Eurodollar%22%7D%2C%7B%22name%22%3A%22CBOT%3AZB1!%22%2C%22displayName%22%3A%22T-Bond%22%7D%2C%7B%22name%22%3A%22CBOT%3AUB1!%22%2C%22displayName%22%3A%22Ultra%20T-Bond%22%7D%2C%7B%22name%22%3A%22EUREX%3AFGBL1!%22%2C%22displayName%22%3A%22Euro%20Bund%22%7D%2C%7B%22name%22%3A%22EUREX%3AFBTP1!%22%2C%22displayName%22%3A%22Euro%20BTP%22%7D%2C%7B%22name%22%3A%22EUREX%3AFGBM1!%22%2C%22displayName%22%3A%22Euro%20BOBL%22%7D%5D%7D%2C%7B%22name%22%3A%22Forex%22%2C%22originalName%22%3A%22Forex%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22FX%3AEURUSD%22%2C%22displayName%22%3A%22EUR%2FUSD%22%7D%2C%7B%22name%22%3A%22FX%3AGBPUSD%22%2C%22displayName%22%3A%22GBP%2FUSD%22%7D%2C%7B%22name%22%3A%22FX%3AUSDJPY%22%2C%22displayName%22%3A%22USD%2FJPY%22%7D%2C%7B%22name%22%3A%22FX%3AUSDCHF%22%2C%22displayName%22%3A%22USD%2FCHF%22%7D%2C%7B%22name%22%3A%22FX%3AAUDUSD%22%2C%22displayName%22%3A%22AUD%2FUSD%22%7D%2C%7B%22name%22%3A%22FX%3AUSDCAD%22%2C%22displayName%22%3A%22USD%2FCAD%22%7D%5D%7D%5D%2C%22showSymbolLogo%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Afalse%2C%22utm_source%22%3A%22stockglobalmarkets.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22market-quotes%22%2C%22page-uri%22%3A%22stockglobalmarkets.com%2Foverview%22%7D"
+          title="market quotes Tradin"></iframe>
         </div>
         <div id="g">
-            <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-      {
-      "title": "Cryptocurrencies",
-      "title_raw": "Cryptocurrencies",
-      "title_link": "/markets/cryptocurrencies/prices-all/",
-      "width": "100vw",
-      "height": "700px",
-      "locale": "en",
-      "showSymbolLogo": true,
-      "symbolsGroups": [
-        {
-          "name": "Overview",
-          "symbols": [
-            {
-              "name": "CRYPTOCAP:TOTAL"
-            },
-            {
-              "name": "BITSTAMP:BTCUSD"
-            },
-            {
-              "name": "BITSTAMP:ETHUSD"
-            },
-            {
-              "name": "FTX:SOLUSD"
-            },
-            {
-              "name": "BINANCE:AVAXUSD"
-            },
-            {
-              "name": "COINBASE:UNIUSD"
-            }
-          ]
-        },
-        {
-          "name": "Bitcoin",
-          "symbols": [
-            {
-              "name": "BITSTAMP:BTCUSD"
-            },
-            {
-              "name": "COINBASE:BTCEUR"
-            },
-            {
-              "name": "COINBASE:BTCGBP"
-            },
-            {
-              "name": "BITFLYER:BTCJPY"
-            },
-            {
-              "name": "CME:BTC1!"
-            }
-          ]
-        },
-        {
-          "name": "Ethereum",
-          "symbols": [
-            {
-              "name": "BITSTAMP:ETHUSD"
-            },
-            {
-              "name": "KRAKEN:ETHEUR"
-            },
-            {
-              "name": "COINBASE:ETHGBP"
-            },
-            {
-              "name": "BITFLYER:ETHJPY"
-            },
-            {
-              "name": "BINANCE:ETHBTC"
-            },
-            {
-              "name": "BINANCE:ETHUSDT"
-            }
-          ]
-        },
-        {
-          "name": "Solana",
-          "symbols": [
-            {
-              "name": "FTX:SOLUSD"
-            },
-            {
-              "name": "BINANCE:SOLEUR"
-            },
-            {
-              "name": "COINBASE:SOLGBP"
-            },
-            {
-              "name": "BINANCE:SOLBTC"
-            },
-            {
-              "name": "HUOBI:SOLETH"
-            },
-            {
-              "name": "BINANCE:SOLUSDT"
-            }
-          ]
-        },
-        {
-          "name": "Uniswap",
-          "symbols": [
-            {
-              "name": "COINBASE:UNIUSD"
-            },
-            {
-              "name": "KRAKEN:UNIEUR"
-            },
-            {
-              "name": "COINBASE:UNIGBP"
-            },
-            {
-              "name": "BINANCE:UNIBTC"
-            },
-            {
-              "name": "KRAKEN:UNIETH"
-            },
-            {
-              "name": "BINANCE:UNIUSDT"
-            }
-          ]
-        }
-      ],
-      "colorTheme": "dark"
-    }
-      </script>
-    </div>
-    <!-- TradingView Widget END -->
+          <iframe scrolling="no" allowtransparency="true" frameborder="0"
+          style="user-select: none; box-sizing: border-box; display: block; height:100vh; width: 100%;" 
+          src="https://www.tradingview-widget.com/embed-widget/market-quotes/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22symbolsGroups%22%3A%5B%7B%22name%22%3A%22Crypto%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22BINANCE%3ABTCUSDT%22%7D%2C%7B%22name%22%3A%22BITSTAMP%3ABTCUSD%22%7D%2C%7B%22name%22%3A%22COINBASE%3ABTCUSD%22%7D%2C%7B%22name%22%3A%22BINANCE%3ABTCUSDT.P%22%7D%2C%7B%22name%22%3A%22BINANCE%3AETHUSDT%22%7D%2C%7B%22name%22%3A%22BYBIT%3ABTCUSDT.P%22%7D%2C%7B%22name%22%3A%22INDEX%3ABTCUSD%22%7D%2C%7B%22name%22%3A%22BINANCE%3AXRPUSDT%22%7D%2C%7B%22name%22%3A%22BITSTAMP%3AETHUSD%22%7D%2C%7B%22name%22%3A%22BINANCE%3AADAUSDT%22%7D%2C%7B%22name%22%3A%22COINBASE%3AETHUSD%22%7D%2C%7B%22name%22%3A%22CRYPTOCAP%3ABTC.D%22%7D%2C%7B%22name%22%3A%22BINANCE%3ADOGEUSDT%22%7D%2C%7B%22name%22%3A%22BINANCE%3AMATICUSDT%22%7D%2C%7B%22name%22%3A%22BYBIT%3ABTCUSD.P%22%7D%2C%7B%22name%22%3A%22BINANCE%3ASOLUSDT%22%7D%2C%7B%22name%22%3A%22BINANCE%3AETHUSDT.P%22%7D%2C%7B%22name%22%3A%22BINANCE%3AARBUSDT%22%7D%2C%7B%22name%22%3A%22BINANCE%3AFTMUSDT%22%7D%2C%7B%22name%22%3A%22KUCOIN%3ABTCUSDT%22%7D%2C%7B%22name%22%3A%22BINANCE%3ASHIBUSDT%22%7D%5D%7D%5D%2C%22showSymbolLogo%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Afalse%2C%22utm_source%22%3A%22stockglobalmarkets.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22market-quotes%22%2C%22page-uri%22%3A%22stockglobalmarkets.com%2Foverview%22%7D" title="market quotes TradingView widget" lang="en"></iframe>
         </div>
-        <div id="g">This is g3</div>
-        <div id="g">This is g4</div>
+        <div id="g">
+          <iframe scrolling="no" allowtransparency="true" frameborder="0" 
+          style="user-select: none; box-sizing: border-box; display: block; height:100vh; width: 100%;" 
+          src="https://www.tradingview-widget.com/embed-widget/market-quotes/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22symbolsGroups%22%3A%5B%7B%22name%22%3A%22Stocks%22%2C%22originalName%22%3A%22Indices%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22NASDAQ%3ATSLA%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AAAPL%22%7D%2C%7B%22name%22%3A%22NASDAQ%3ANVDA%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AAMZN%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AMSFT%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AMETA%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AAMD%22%7D%2C%7B%22name%22%3A%22NASDAQ%3ANFLX%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AGOOGL%22%7D%2C%7B%22name%22%3A%22NASDAQ%3ACOIN%22%7D%2C%7B%22name%22%3A%22NYSE%3ABABA%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AGOOG%22%7D%2C%7B%22name%22%3A%22NYSE%3AAI%22%7D%2C%7B%22name%22%3A%22NYSE%3AGME%22%7D%2C%7B%22name%22%3A%22NYSE%3ASQ%22%7D%2C%7B%22name%22%3A%22NYSE%3AAMC%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AINTC%22%7D%2C%7B%22name%22%3A%22NSE%3AINFY%22%7D%2C%7B%22name%22%3A%22NYSE%3APLTR%22%7D%2C%7B%22name%22%3A%22NASDAQ%3AMRNA%22%7D%5D%7D%5D%2C%22showSymbolLogo%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Afalse%2C%22utm_source%22%3A%22stockglobalmarkets.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22market-quotes%22%2C%22page-uri%22%3A%22stockglobalmarkets.com%2Foverview%22%7D"
+           title="market quotes TradingView widget" lang="en"></iframe>
+        </div>
+        <div id="g">
+          <iframe scrolling="no" allowtransparency="true" frameborder="0" 
+          style="user-select: none; box-sizing: border-box; display: block; height:100vh; width: 100%;"
+           src="https://www.tradingview-widget.com/embed-widget/market-quotes/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22100%25%22%2C%22symbolsGroups%22%3A%5B%7B%22name%22%3A%22Economy%22%2C%22symbols%22%3A%5B%7B%22name%22%3A%22FRED%3AFEDFUNDS%22%7D%2C%7B%22name%22%3A%22ECONOMICS%3AUSIRYY%22%7D%2C%7B%22name%22%3A%22ECONOMICS%3AUSINTR%22%7D%2C%7B%22name%22%3A%22FRED%3AUNRATE%22%7D%2C%7B%22name%22%3A%22FRED%3AWALCL%22%7D%2C%7B%22name%22%3A%22FRED%3ASP500%22%7D%2C%7B%22name%22%3A%22FRED%3AT10Y2Y%22%7D%2C%7B%22name%22%3A%22ECONOMICS%3AUSCCPI%22%7D%2C%7B%22name%22%3A%22FRED%3AEFFR%22%7D%2C%7B%22name%22%3A%22ECONOMICS%3AUSM2%22%7D%2C%7B%22name%22%3A%22FRED%3ABAMLH0A0HYM2%22%7D%2C%7B%22name%22%3A%22FRED%3AT10YIE%22%7D%2C%7B%22name%22%3A%22FRED%3AMORTGAGE30US%22%7D%2C%7B%22name%22%3A%22FRED%3ARRPONTSYD%22%7D%2C%7B%22name%22%3A%22FRED%3ADFII10%22%7D%2C%7B%22name%22%3A%22FRED%3ANFCI%22%7D%2C%7B%22name%22%3A%22ECONOMICS%3AUSCBBS%22%7D%2C%7B%22name%22%3A%22FRED%3AM2SL%22%7D%2C%7B%22name%22%3A%22FRED%3AT5YIE%22%7D%2C%7B%22name%22%3A%22FRED%3AWM2NS%22%7D%2C%7B%22name%22%3A%22FRED%3ACPIAUCSL%22%7D%5D%7D%5D%2C%22showSymbolLogo%22%3Atrue%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Afalse%2C%22utm_source%22%3A%22stockglobalmarkets.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22market-quotes%22%2C%22page-uri%22%3A%22stockglobalmarkets.com%2Foverview%22%7D" 
+          title="market quotes TradingView widget" lang="en"></iframe>
+        </div>
     </div>
 
 </div>
@@ -332,6 +82,7 @@
     document.addEventListener("DOMContentLoaded",()=>{
         document.getElementById('btn1').style.backgroundColor="#433124"
         document.getElementById('btn1').classList.add('act')
+        gs[0].style.display="inline";
     })
 
 </script>
