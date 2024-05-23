@@ -53,57 +53,59 @@
             <div class="graph">
                 <canvas id="myChart"></canvas>
             </div>
-            <table border="1">
-                <tr style="background-color: #222;">
-                    <td colspan="3">
-                        <h1>Random Recent History</h1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Round</th>
-                    <th>Result</th>
-                    <th>Status</th>
-                </tr>
-                {%for h in histroy %}
-                <tr class="tb">
-                    <td>{{h.roundno}}</td>
-                    <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
-                    <td>
-                        {% if h.total <= 13 %} <button>Bear</button>
-                            {% else %}
-                            <button>Bull</button>
-                            {% endif %}
-                            {% if h.total|divisibleby:2 %}
-                            <button>Twin</button>
-                            {% else %}
-                            <button>Single</button>
-                            {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-
-            <table border="1">
-                <tr style="background-color: #222;">
-                    <td colspan="4">
-                        <h1>User Recent History</h1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Round</th>
-                    <th>User Choice</th>
-                    <th>User Amount</th>
-                    <th>Results</th>
-                </tr>
-                {%for h in uh %}
-                <tr class="tb">
-                    <td>{{h.roundno}}</td>
-                    <td><button>{{h.choice}}</button></td>
-                    <td>{{h.amount}}</td>
-                    <td>{{h.result}}</td>
-                </tr>
-                {% endfor %}
-            </table>
+            <div class="table">
+                <table border="1">
+                    <tr style="background-color: #222;">
+                        <td colspan="3">
+                            <h1>Random Recent History</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Round</th>
+                        <th>Result</th>
+                        <th>Status</th>
+                    </tr>
+                    {%for h in histroy %}
+                    <tr class="tb">
+                        <td>{{h.roundno}}</td>
+                        <td>{{h.a}} + {{h.b}} + {{h.c}} = {{h.total}}</td>
+                        <td>
+                            {% if h.total <= 13 %} <button>Bear</button>
+                                {% else %}
+                                <button>Bull</button>
+                                {% endif %}
+                                {% if h.total|divisibleby:2 %}
+                                <button>Twin</button>
+                                {% else %}
+                                <button>Single</button>
+                                {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+    
+                <table border="1">
+                    <tr style="background-color: #222;">
+                        <td colspan="4">
+                            <h1>User Recent History</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Round</th>
+                        <th>User Choice</th>
+                        <th>User Amount</th>
+                        <th>Results</th>
+                    </tr>
+                    {%for h in uh %}
+                    <tr class="tb">
+                        <td>{{h.roundno}}</td>
+                        <td><button>{{h.choice}}</button></td>
+                        <td>{{h.amount}}</td>
+                        <td>{{h.result}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
     <input type="text" value="{{b}}" id="b" hidden />
