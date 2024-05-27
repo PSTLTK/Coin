@@ -1,7 +1,7 @@
 {% extends 'customer_base.html' %}
 {% load static %}
 {% block content %}
-
+<center>
 <section class="member">
     <div class="member-container">
         <div class="match">
@@ -45,9 +45,10 @@
                 <button style="border:4px solid blue" id="twin">Twin</button>
             </div>
             <div class="input">
-                <input type="text" id="cinput">
+                <input type="text" id="cinput" placeholder="Amount">
+                <span>Available - <strong>{{b}}</strong> USDT</span>
             </div>
-            <button type="submit" id="sub">Submit</button>
+            <button type="submit" id="sub">Purchase</button>
         </div>
         <div class="graph-table">
             <div class="graph">
@@ -57,7 +58,7 @@
                 <table border="1">
                     <tr style="background-color: #222;">
                         <td colspan="3">
-                            <h1>Random Recent History</h1>
+                            <h1>Recent History</h1>
                         </td>
                     </tr>
                     <tr>
@@ -87,13 +88,13 @@
                 <table border="1">
                     <tr style="background-color: #222;">
                         <td colspan="4">
-                            <h1>User Recent History</h1>
+                            <h1>Recent History</h1>
                         </td>
                     </tr>
                     <tr>
                         <th>Round</th>
-                        <th>User Choice</th>
-                        <th>User Amount</th>
+                        <th>Purchased</th>
+                        <th>Amount</th>
                         <th>Results</th>
                     </tr>
                     {%for h in uh %}
@@ -101,7 +102,13 @@
                         <td>{{h.roundno}}</td>
                         <td><button>{{h.choice}}</button></td>
                         <td>{{h.amount}}</td>
-                        <td>{{h.result}}</td>
+                        {% if h.result == 'success' %}
+                        <td><span style="background:transparent !important;border:3px solid #73d75d;padding:.4rem 1rem;border-radius: .8rem;color:#73d75d;">{{h.result}}</span></td>
+                        {% elif h.result == 'failed' %}
+                        <td><span style="background:transparent !important;border:3px solid red;padding: .4rem 1.55rem;border-radius: .8rem;color:red;">{{h.result}}</span></td>
+                        {% else %}
+                        <td><span style="background:transparent !important;border:3px solid orange;padding:.4rem 1rem;border-radius: .8rem;color:orange;">{{h.result}}</span></td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </table>
@@ -112,7 +119,7 @@
     <h6 id="u" hidden>{{u}}</h6>
     <h6 id="userid" hidden>{{user.id}}</h6>
 </section>
-
+</center>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const countdownElement = document.getElementById('timer');
@@ -145,24 +152,40 @@
         console.log("ok")
         if (c == "bull") {
             bull.style.backgroundColor = "blue"
+            bull.style.color = "white"
             bear.style.backgroundColor = "white"
+            bear.style.color = "black"
             single.style.backgroundColor = "white"
+            single.style.color = "black"
             twin.style.backgroundColor = "white"
+            twin.style.color = "black"
         } else if (c == "bear") {
             bull.style.backgroundColor = "white"
+            bull.style.color = "black"
             bear.style.backgroundColor = "red"
+            bear.style.color = "white"
             single.style.backgroundColor = "white"
+            single.style.color = "black"
             twin.style.backgroundColor = "white"
+            twin.style.color = "black"
         } else if (c == "twin") {
             bull.style.backgroundColor = "white"
+            bull.style.color = "black"
             bear.style.backgroundColor = "white"
+            bear.style.color = "black"
             single.style.backgroundColor = "white"
+            single.style.color = "black"
             twin.style.backgroundColor = "blue"
+            twin.style.color = "white"
         } else {
             bull.style.backgroundColor = "white"
+            bull.style.color = "black"
             bear.style.backgroundColor = "white"
+            bear.style.color = "black"
             single.style.backgroundColor = "red"
+            single.style.color = "white"
             twin.style.backgroundColor = "white"
+            twin.style.color = "black"
         }
         uc = c
     }
@@ -196,17 +219,29 @@ var myChart = new Chart(ctx, {
     datasets: [{
       label: 'first number',
       data: [{%for h in histroy %} '{{ h.a }}', {% endfor %}],
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundColor: [
+                            'rgba(226, 14, 2, 1.0)',
+
+                        ],
     },
     {
       label: 'second number',
       data: [{%for h in histroy %} '{{ h.b }}', {% endfor %}],
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundColor: [
+                            'rgba(0, 0, 255, 1)',
+
+                        ],
     },
     {
       label: 'third number',
       data: [{%for h in histroy %} '{{ h.c }}', {% endfor %}],
-      borderWidth: 1
+      borderWidth: 1,
+      backgroundColor: [
+                            'rgba(115, 215, 93, 1)',
+
+                        ],
     }]
   },
   options: {

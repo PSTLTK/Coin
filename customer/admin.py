@@ -6,3 +6,4 @@ from customer.models import *
 admin.site.register(DepositModel)
 admin.site.register(CoinModel)
 admin.site.register(WithdrawModel)
+admin.site.register(FooterSliderModel)

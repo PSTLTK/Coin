@@ -25,3 +25,7 @@ class NetworkModel(models.Model):
 
     def __str__(self):
         return self.type
+
+class FooterSliderModel(models.Model):
+    image = models.ImageField(default=None)
+    time = models.DateTimeField(default=datetime.now)

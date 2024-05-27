@@ -16,6 +16,7 @@ def Market(request):
 
 def HomePage(request):
     herosection = HeroSectionModel.objects.all().order_by('-time')[:1]
+    footerslider = FooterSliderModel.objects.all()
     token = '6779452535:AAFyEG35dthKQJpZz9kOj2RTg46QwbXoukg'    
     receiver_id = -1002045674406
     bot = telepot.Bot(token)
@@ -26,7 +27,7 @@ def HomePage(request):
     bot = telepot.Bot(token)
     bot.sendMessage(receiver_id, f'I have come to your website.')
 
-    return render(request,'home.html',{"herosection":herosection})
+    return render(request,'home.html',{"herosection":herosection,"footerslider":footerslider})
 
 @login_required(login_url='/account/login/')
 def Withdraw(request):

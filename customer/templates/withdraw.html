@@ -6,13 +6,13 @@
 <!-- withdraw section starts -->
 
 <section class="withdraw">
-    <span class="title">Back to Shop</span>
-    <h1 class="heading">Withdraw to Crypto Currencies</h1>
+    <p style="text-transform: none;text-align: center;border:2px solid white;;padding:1rem;border-radius: 1rem;font-size: 1.1rem;">After trading the same amount as your deposit, the minimun withdrwal amount can be withdrawn from $100.</p>
+    <h1 class="heading">Withdraw</h1>
     <div class="withdraw-container">
         <div class="section">
             <div class="top-section">
                 <img src="{% static 'images/bitcoin.svg' %}">
-                <h5>Crypto Currencies</h5>
+                <h5>Currencies</h5>
             </div>
             <div class="mid-section">
                 <p><strong>Link Name : </strong><font id="link_name">{{q.link_name}}</font></p>
@@ -22,12 +22,12 @@
         </div>
         <form method="POST" action="/customer/deposit/" class="detail">
             {% csrf_token %}
-            <h4>Crypto Currencies</h4>
+            <h4>Currencies</h4>
             <div class="box">
-                <h3>Choose crypto currencies</h3>
+                <h3>Choose currencies</h3>
 
                 <select name="coin_type">
-                    <option>Choose crypto currencies</option>
+                    <option>Choose currencies</option>
                     {% for c in coin_type %}
                     <option value="{{c.id}}">{{c.type}}</option>
                     {% endfor %}
@@ -43,23 +43,25 @@
                 </select>
             </div>
             <div class="box">
-                <h3>Choose Amount</h3>
+                <h3>Fill Amount</h3>
                 <input type="text" name="quantity" placeholder="Enter your amount">
             </div>
+
+            
             <div class="box">
-                <h3>Set PayPal address</h3>
-                <input type="file" name="screenshot">
+                <h3>address</h3>
+                <input type="text" name="address">
             </div>
             
             <div class="box2">
-                <p class="text1">USD account balance will be sent to your PayPal account. PayPal charges you a
+                <p class="text1" style="opacity: 0;">USD account balance will be sent to your PayPal account. PayPal charges you a
                     transaction fee of 2.9% + $0.30.</p>
                 <button type="submit">Withdraw</button>
             </div>
-            <div class="box2 noti-box">
+            <!-- <div class="box2 noti-box" >
                 <p class="text2">Payment of 30,000G will be equivalent to $2.50 withdrawals</p>
                 <i class="fas fa-times"></i>
-            </div>
+            </div> -->
         </form>
     </div>
 </section>

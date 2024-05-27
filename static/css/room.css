@@ -6,19 +6,17 @@
     box-sizing: border-box;
     text-decoration: none;
     outline:none;border:none;
-    text-transform: capitalize;
     transition: all .2s linear;
-    background:none;
-}
-
-section{
-    padding:2rem 7%;
 }
 
 .roomcontainer{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
     gap:2rem;
+}
+
+section{
+    padding:2rem 0;
 }
 
 .roomcontainer .bgcolor1{
@@ -39,28 +37,22 @@ section{
 
 .roomcontainer .box{
     display:flex;
-    justify-content: center;
-    align-items: center;
     gap:1.5rem;
-    padding:3rem 2rem;
+    padding:2rem;
     color:#fff;
-    border-radius: .5rem;
+    justify-content: space-between;
+    border-radius: 1rem;
     cursor:pointer;
 }
 
 .roomcontainer .box .sector{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:2rem;
+    justify-content: space-between;
+    gap:4rem;
     font-size: .8rem;
 }
 
 @media (max-width:1200px){
-    section{
-        padding:2rem 4%;
-    }
     
     .roomcontainer{
         grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
@@ -74,11 +66,5 @@ section{
     
     .roomcontainer .box .sector{
         gap:1.5rem;
-    }
-}
-
-@media (max-width:375px) {
-    section{
-        padding:2rem 0;
     }
 }
