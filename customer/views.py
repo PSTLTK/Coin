@@ -93,11 +93,11 @@ def RoomChoice(request):
         return render(request,"room_choice.html",{"user":user,"b": 0})
 
 def NewMember(request):
-    ran = RandomModel.objects.get(status="now")
+    ran = RandomModel.objects.get(status="now",room=1)
     current_user = User.objects.get(email = request.user.email)
     roundno = ran.roundno
-    history = RandomModel.objects.filter(status="used").order_by("-id")[:5] 
-    dh = RandomModel.objects.filter(status="used").order_by("-id")[5:]
+    history = RandomModel.objects.filter(status="used",room=1).order_by("-id")[:5] 
+    dh = RandomModel.objects.filter(status="used",room=1).order_by("-id")[5:]
     balance = CoinModel.objects.get(customer=current_user.id)
 
     for d in dh:
@@ -106,7 +106,7 @@ def NewMember(request):
     uhistroy = ""
     uh = []
     try:
-        uhistroy = UserChoiceModel.objects.filter(user=current_user.id).order_by("-id")
+        uhistroy = UserChoiceModel.objects.filter(user=current_user.id,room=1).order_by("-id")
     except:
         uhistroy = "No history" 
 
@@ -118,3 +118,80 @@ def NewMember(request):
     context={"roundno":roundno,"histroy":history,"b":balance.quantity,"uh":uh}
     return render(request,"new_member.html",context)
 
+def Intermediate(request):
+    ran = RandomModel.objects.get(status="now",room=2)
+    current_user = User.objects.get(email = request.user.email)
+    roundno = ran.roundno
+    history = RandomModel.objects.filter(status="used",room=2).order_by("-id")[:5] 
+    dh = RandomModel.objects.filter(status="used",room=2).order_by("-id")[5:]
+    balance = CoinModel.objects.get(customer=current_user.id)
+
+    for d in dh:
+        d.delete()
+
+    uhistroy = ""
+    uh = []
+    try:
+        uhistroy = UserChoiceModel.objects.filter(user=current_user.id,room=2).order_by("-id")
+    except:
+        uhistroy = "No history" 
+
+    if len(uhistroy) > 5:
+        uh = list(uhistroy)[:5]
+    else:
+        uh = list(uhistroy)
+
+    context={"roundno":roundno,"histroy":history,"b":balance.quantity,"uh":uh}
+    return render(request,"intermediate.html",context)
+
+def Advanced(request):
+    ran = RandomModel.objects.get(status="now",room=3)
+    current_user = User.objects.get(email = request.user.email)
+    roundno = ran.roundno
+    history = RandomModel.objects.filter(status="used",room=3).order_by("-id")[:5] 
+    dh = RandomModel.objects.filter(status="used",room=3).order_by("-id")[5:]
+    balance = CoinModel.objects.get(customer=current_user.id)
+
+    for d in dh:
+        d.delete()
+
+    uhistroy = ""
+    uh = []
+    try:
+        uhistroy = UserChoiceModel.objects.filter(user=current_user.id,room=3).order_by("-id")
+    except:
+        uhistroy = "No history" 
+
+    if len(uhistroy) > 5:
+        uh = list(uhistroy)[:5]
+    else:
+        uh = list(uhistroy)
+
+    context={"roundno":roundno,"histroy":history,"b":balance.quantity,"uh":uh}
+    return render(request,"advanced.html",context)
+
+def Vip(request):
+    ran = RandomModel.objects.get(status="now",room=4)
+    current_user = User.objects.get(email = request.user.email)
+    roundno = ran.roundno
+    history = RandomModel.objects.filter(status="used",room=4).order_by("-id")[:5] 
+    dh = RandomModel.objects.filter(status="used",room=4).order_by("-id")[5:]
+    balance = CoinModel.objects.get(customer=current_user.id)
+
+    for d in dh:
+        d.delete()
+
+    uhistroy = ""
+    uh = []
+    try:
+        uhistroy = UserChoiceModel.objects.filter(user=current_user.id,room=4).order_by("-id")
+    except:
+        uhistroy = "No history" 
+
+    if len(uhistroy) > 5:
+        uh = list(uhistroy)[:5]
+    else:
+        uh = list(uhistroy)
+
+    context={"roundno":roundno,"histroy":history,"b":balance.quantity,"uh":uh}
+    return render(request,"vip.html",context)

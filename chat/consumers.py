@@ -157,7 +157,7 @@ class CountdownConsumer(AsyncWebsocketConsumer):
         minute = now.minute % 5
         minutes = 5 - minute
         seconds = minutes * 60 - now.second
-        # seconds = 10
+        #seconds = 10
         while True:
             if seconds <= 0:
                 await self.send(text_data="0:00")

@@ -123,17 +123,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const countdownElement = document.getElementById('timer');
-    // const socket = new WebSocket(`ws://${window.location.host}/ws/countdown/`);
-
-    // socket.onmessage = function (event) {
-    //     const message = event.data;
-    //     if (message == "start_process") {
-    //         window.location.href = '/customer/random/'
-    //         // Handle starting the next process
-    //     } else {
-    //         countdownElement.innerHTML = message;
-    //     }
-    // };
 
 const Count = () => {
     console.log("count")
@@ -218,11 +207,11 @@ setInterval(() => {
     sub.onclick = function () {
         if (uc == undefined) {
             alert("Please Choose")
-        } else if (Number(cinput.value) < 1) {
-            alert("You need to pick more than 1")
+        } else if (Number(cinput.value) < 50000) {
+            alert("You need to pick more than 50000")
         }
         else {
-            window.location.href = `/customer/upick/${uc}/${cinput.value}/1/`
+            window.location.href = `/customer/upick/${uc}/${cinput.value}/4/`
         }
 
     }
